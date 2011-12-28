@@ -2,7 +2,6 @@
 
 @interface OGBox: OGWidget
 + box;
-
 - (void)appendChild: (OGWidget*)child
 	     expand: (BOOL)expand
 	       fill: (BOOL)fill
