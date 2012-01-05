@@ -1,12 +1,7 @@
 PREFIX ?= /usr/local
 
-all : test.exe
+test:
+	@objfw-compile -DOG_WIN32 -Wall -g -o test -I../headers *.m
 
-%.o : %.m
-	gcc -g -DOG_WIN32 -I../headers -c -o $@ $^ `objfw-config --cppflags --objcflags`
-
-test.exe : OGApplication.o OGWidget.o OGWindow.o OGBox.o OGVBox.o OGHBox.o OGButton.o OGComboBox.o OGComboBoxItem.o test.o
-	gcc -mwindows -o test.exe *.o `objfw-config --libs`
-
-clean :
-	rm -f *.exe *.o
+clean:
+	rm -f *.exe *.o *~
