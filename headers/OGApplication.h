@@ -1,5 +1,3 @@
-#include <gtk/gtk.h>
-
 #import <ObjFW/ObjFW.h>
 
 @protocol OGApplicationDelegate <OFObject>

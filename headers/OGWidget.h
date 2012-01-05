@@ -20,14 +20,18 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <gtk/gtk.h>
+#ifdef OG_GTK
+# include <gtk/gtk.h>
+#endif
 
 #import <ObjFW/ObjFW.h>
 
 @interface OGWidget: OFObject
 {
 @public
+#ifdef OG_GTK
 	GtkWidget *widget;
+#endif
 }
 
 - (void)show;

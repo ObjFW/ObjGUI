@@ -1,12 +1,12 @@
 PREFIX ?= /usr/local
 
 all:
-	@objfw-compile -Wall -g --lib 0.0 -o objgui -I../headers \
+	@objfw-compile -DOG_GTK -Wall -g --lib 0.0 -o objgui -I../headers \
 		`pkg-config --cflags --libs gtk+-3.0` \
 		`ls *.m | fgrep -v test.m`
 
 test:
-	@objfw-compile -Wall -g -o test -I../headers \
+	@objfw-compile -DOG_GTK -Wall -g -o test -I../headers \
 		`pkg-config --cflags --libs gtk+-3.0` \
 		*.m
 
