@@ -74,7 +74,7 @@ extern Class og_application_delegate(void);
 void win32_init(int *argc, char ***argv)
 {
   //register a single window class; we'll customize later, as needed
-  char *clsName = "OFWidgetClass";
+  char *clsName = "OGWidgetClass";
   HINSTANCE hInst = (HINSTANCE)GetModuleHandle(NULL);
   WNDCLASSEX wcx;
   wcx.cbSize        = sizeof(wcx);
