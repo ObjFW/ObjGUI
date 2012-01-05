@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2011, 2012, Jonathan Schleifer <js@webkeks.org>
+ * Copyright (c) 2011, 2012, Dillon Aumiller <dillonaumiller@gmail.com>
  *
  * https://webkeks.org/hg/objgui/
  *
@@ -41,6 +42,12 @@
 	id <OGComboBoxDelegate> delegate;
 	id <OGComboBoxDataSource> dataSource;
 }
+
+#ifdef OG_W32
+//unfortunately, the built-in Win32 ListBox stores a pointer to it's parent (for sending selection changed notifications) during CreateWindow().
+//it does not update it after a SetParent()... unless we implement a custom ListBox control i don't see a way around this...
+- initWithParent : (OGWidget *)parent;
+#endif
 
 @property (assign) id <OGComboBoxDelegate> delegate;
 @property (assign) id <OGComboBoxDataSource> dataSource;

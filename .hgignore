@@ -1,0 +1,6 @@
+syntax: glob
+*.dll
+*.so
+*.o
+*.a
+*.exe

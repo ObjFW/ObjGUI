@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2011, 2012, Jonathan Schleifer <js@webkeks.org>
+ * Copyright (c) 2011, 2012, Dillon Aumiller <dillonaumiller@gmail.com>
  *
  * https://webkeks.org/hg/objgui/
  *
@@ -21,7 +22,10 @@
  */
 
 #ifdef OG_GTK
-# include <gtk/gtk.h>
+#i nclude <gtk/gtk.h>
+#endif
+#ifdef OG_W32
+# include <windows.h>
 #endif
 
 #import <ObjFW/ObjFW.h>
@@ -32,10 +36,18 @@
 #ifdef OG_GTK
 	GtkWidget *widget;
 #endif
+#ifdef OG_W32
+	HWND widget;
+#endif
 }
 
 - (void)show;
 - (void)hide;
 @end
 
+#ifdef OG_GTK
 extern void og_destroy(GtkWidget*, OGWidget*);
+#endif
+#ifdef OG_W32
+extern void og_destroy(HWND widget, OGWidget *object);
+#endif

@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2011, 2012, Jonathan Schleifer <js@webkeks.org>
+ * Copyright (c) 2011, 2012, Dillon Aumiller <dillonaumiller@gmail.com>
  *
  * https://webkeks.org/hg/objgui/
  *
@@ -22,7 +23,24 @@
 
 #import "OGWidget.h"
 
+#ifdef OG_W32
+typedef struct s_OGBoxChild
+{
+	HWND  hwnd;
+	BOOL  expand;
+	BOOL  fill;
+	int   padding;
+	int   originalSize;
+	float currentSize;
+	struct s_OGBoxChild *next;
+} OGBoxChild;
+#endif
+
 @interface OGBox: OGWidget
+#ifdef OG_W32
+{ OGBoxChild *firstBorn; }
+- (void)resizeChildren;
+#endif
 + box;
 - (void)appendChild: (OGWidget*)child
 	     expand: (BOOL)expand
