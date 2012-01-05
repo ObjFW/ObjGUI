@@ -61,13 +61,13 @@ static void CH_Command(id object, WPARAM wparam)
   HINSTANCE hInst = (HINSTANCE)GetModuleHandle(NULL);
   widget = CreateWindow("LISTBOX", "", LBS_NOINTEGRALHEIGHT,
                           0, 0, 32, 32,
-                          NULL, NULL, hInst, NULL);  
+                          NULL, NULL, hInst, NULL);
   SetWindowLong(widget, GWL_STYLE, LBS_NOINTEGRALHEIGHT | LBS_NOTIFY | WS_CHILD | WS_VISIBLE | WS_TABSTOP);
   CommandHandlerData *chd = (CommandHandlerData *)malloc(sizeof(CommandHandlerData));
   chd->funct  = CH_Command;
   chd->object = self;
   SetProp(widget, "CommandHandlerData", chd);
-      
+
   [self retain];
   return self;
 }
@@ -82,12 +82,12 @@ static void CH_Command(id object, WPARAM wparam)
   HINSTANCE hInst = (HINSTANCE)GetModuleHandle(NULL);
   widget = CreateWindow("LISTBOX", "", LBS_NOINTEGRALHEIGHT | LBS_NOTIFY | WS_CHILD | WS_VISIBLE,
                           0, 0, 32, 32,
-                          parent->widget, NULL, hInst, NULL);  
+                          parent->widget, NULL, hInst, NULL);
   CommandHandlerData *chd = (CommandHandlerData *)malloc(sizeof(CommandHandlerData));
   chd->funct  = CH_Command;
   chd->object = self;
   SetProp(widget, "CommandHandlerData", chd);
-      
+
   [self retain];
   return self;
 }
@@ -110,7 +110,7 @@ static void CH_Command(id object, WPARAM wparam)
   {
     OGComboBoxItem *item = itemAtIndex(dataSource,
         @selector(comboBox:itemAtIndex:), self, i);
-    
+
     SendMessage(widget, LB_ADDSTRING, 0, (WPARAM)[item.label UTF8String]);
   }
 }

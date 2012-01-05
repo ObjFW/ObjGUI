@@ -44,7 +44,7 @@ static int CALLBACK Resize_EnumChildren(HWND child, LPARAM lparam)
   //so make sure child.parent == use
   HWND parent = (HWND)lparam;
   if(GetParent(child) != parent) return 1;
-  
+
   RECT rc;
   GetClientRect(parent, &rc);
   SetWindowPos(child, NULL, 0, 0, rc.right, rc.bottom,
@@ -67,7 +67,7 @@ static int CALLBACK Resize_EnumChildren(HWND child, LPARAM lparam)
 
   SetWindowLong(widget, GWL_EXSTYLE, WS_EX_OVERLAPPEDWINDOW);
   //"event connections" are handled in MessageReceived
-  
+
   [self retain];
   return self;
 }
@@ -77,7 +77,7 @@ static int CALLBACK Resize_EnumChildren(HWND child, LPARAM lparam)
   int tlen = GetWindowTextLength(widget);
   char *buff = (char *)malloc(tlen + 1);
   GetWindowText(widget, buff, tlen+1);
-  
+
   OFString *ret = [OFString stringWithUTF8String : buff];
   free(buff);
   return ret;
@@ -138,7 +138,7 @@ static int CALLBACK Resize_EnumChildren(HWND child, LPARAM lparam)
 - (int)MessageReceived : (HWND)hwnd : (UINT)msg : (WPARAM)wparam : (LPARAM)lparam
 {
   HWND ctrlHwnd;
-  
+
   switch(msg)
   {
     case WM_COMMAND:
@@ -150,18 +150,18 @@ static int CALLBACK Resize_EnumChildren(HWND child, LPARAM lparam)
       chd->funct(chd->object, wparam);
       return 0;
     break;
-    
+
     case WM_CLOSE:
       if([self OG_willClose] == YES)
         og_destroy(hwnd, self);
       return 0;
     break;
-    
+
     case WM_SIZE:
       //act like GTK; expand our child(ren) to fit
       EnumChildWindows(widget, Resize_EnumChildren, (LPARAM)widget);
     break;
-    
+
     case WM_SIZING:
       //act like GTK; expand our child(ren) to fit
       EnumChildWindows(widget, Resize_EnumChildren, (LPARAM)widget);

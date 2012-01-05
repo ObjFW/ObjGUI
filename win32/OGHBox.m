@@ -44,7 +44,7 @@
   RECT rc;
   SetParent(child->widget, widget);
   GetWindowRect(child->widget, &rc);
-  
+
   og_box_child_t *newChild   = malloc(sizeof(og_box_child_t));
   newChild->hwnd         = child->widget;
   newChild->expand       = expand;
@@ -53,7 +53,7 @@
   newChild->originalSize = (rc.right - rc.left);
   newChild->currentSize  = (float)(newChild->originalSize + (newChild->padding << 1));
   newChild->next         = NULL;
-  
+
   if(firstBorn == NULL)
     firstBorn = newChild;
   else
@@ -62,7 +62,7 @@
     while(curr->next != NULL) curr = curr->next;
     curr->next = newChild;
   }
-  
+
   [self OG_resizeChildren];
 }
 //----------------------------------------------------------------------------------------------------------------------------------
@@ -74,7 +74,7 @@
   RECT rc;
   SetParent(child->widget, widget);
   GetWindowRect(child->widget, &rc);
-  
+
   og_box_child_t *newChild   = malloc(sizeof(og_box_child_t));
   newChild->hwnd         = child->widget;
   newChild->expand       = expand;
@@ -83,9 +83,9 @@
   newChild->originalSize = (rc.right - rc.left);
   newChild->currentSize  = (float)(newChild->originalSize + (newChild->padding << 1));
   newChild->next         = firstBorn;
-  
+
   firstBorn = newChild;
-  
+
   [self OG_resizeChildren];
 }
 //----------------------------------------------------------------------------------------------------------------------------------
@@ -93,12 +93,12 @@
 {
   RECT rc;
   og_box_child_t *curr;
-  
+
   //get our available size
   GetClientRect(widget, &rc);
   int width  = rc.right;
   int height = rc.bottom;
-  
+
   //get total of childrens' widths
   int childOriginal = 0;
   curr = firstBorn;
@@ -107,11 +107,11 @@
     childOriginal += (curr->originalSize + (curr->padding << 1));
     curr = curr->next;
   }
-  
+
   //how to divide our extra space
   int extra = width - childOriginal;
   float evenShare = 0.0f;
-  
+
   if(extra <= 0)
   {
     curr = firstBorn;
@@ -151,7 +151,7 @@
       }
     }
   }
-  
+
   //assign new positions/heights
   float x = 0.0f;
   curr = firstBorn;
@@ -174,7 +174,7 @@
       [self OG_resizeChildren];
       return DefWindowProc(hwnd, msg, wparam, lparam);
     break;
-    
+
     case WM_SIZING:
       [self OG_resizeChildren];
       return DefWindowProc(hwnd, msg, wparam, lparam);

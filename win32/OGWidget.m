@@ -38,13 +38,13 @@ void og_destroy(HWND widget, OGWidget *object)
 - init
 {
   self = [super init];
-  
+
   widget = NULL;
   HINSTANCE hInst = (HINSTANCE)GetModuleHandle(NULL);
   widget = CreateWindowEx(WS_EX_LEFT, "OGWidgetClass", "OGWidget", WS_OVERLAPPEDWINDOW,
                           0, 0, 1, 1, NULL, NULL, hInst, NULL);
   SetWindowLong(widget, GWL_USERDATA, (int)self);
-  
+
   @try {
     if (isa == [OGWidget class])
       @throw [OFNotImplementedException

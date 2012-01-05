@@ -38,13 +38,13 @@
 - init
 {
   self = [super init];
-  
+
   items = (OGComboBoxItem **)malloc(sizeof(OGComboBoxItem *) << 2);
   items[0] = [OGComboBoxItem comboBoxItemWithLabel : @"Test Combo Item 0"];
   items[1] = [OGComboBoxItem comboBoxItemWithLabel : @"Test Combo Item 1"];
   items[2] = [OGComboBoxItem comboBoxItemWithLabel : @"Test Combo Item 2"];
   items[3] = [OGComboBoxItem comboBoxItemWithLabel : @"Test Combo Item 3"];
-  
+
   [self retain];
   return self;
 }
@@ -89,7 +89,7 @@ OG_APPLICATION_DELEGATE(Test)
        expand: YES
          fill: YES
       padding: 0];
-  
+
   OGComboBox *cb = [[OGComboBox alloc] initWithParent : hboxPre];
   cb.dataSource  = [[TestSource alloc] init];
   cb.delegate    = self;

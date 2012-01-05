@@ -19,7 +19,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 //==================================================================================================================================
 // OGApplication.m
 //==================================================================================================================================
@@ -89,7 +89,7 @@ void win32_init(int *argc, char ***argv)
   wcx.lpszMenuName  = NULL;
   wcx.lpszClassName = clsName;
   wcx.hIconSm       = NULL;
-  
+
   RegisterClassEx(&wcx);
   //TODO: although this doesn't ever really fail, we should probably Throw an Exception here...
   //if(!RegisterClassEx(&wcx)) @throw ...;
@@ -113,7 +113,7 @@ void win32_main()
 LRESULT CALLBACK win32_OGWndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 {
   void *ptr = (void *)GetWindowLong(hwnd, GWL_USERDATA);
-  if(ptr == NULL) return DefWindowProc(hwnd, msg, wparam, lparam); 
+  if(ptr == NULL) return DefWindowProc(hwnd, msg, wparam, lparam);
   return [(id)ptr MessageReceived : hwnd : msg : wparam : lparam];
 }
 //==================================================================================================================================

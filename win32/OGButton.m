@@ -19,7 +19,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 //==================================================================================================================================
 // OGButton.m
 //==================================================================================================================================
@@ -54,7 +54,7 @@ static void CH_Command(id object, WPARAM wparam)
 - init
 {
   self = [super init];
-  
+
   //we're specifying a different class name...
   //so we'll have to discard the default OGWidget HWND...
   DestroyWindow(widget);
@@ -63,7 +63,7 @@ static void CH_Command(id object, WPARAM wparam)
   HINSTANCE hInst = (HINSTANCE)GetModuleHandle(NULL);
   widget = CreateWindow("button", "", BS_PUSHBUTTON,
                           CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
-                          NULL, NULL, hInst, NULL);  
+                          NULL, NULL, hInst, NULL);
   SetWindowLong(widget, GWL_STYLE, BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP);
   //crazy workaround since we don't have control of our WNDPROC for default "button"s
   CommandHandlerData *chd = (CommandHandlerData *)malloc(sizeof(CommandHandlerData));
@@ -82,7 +82,7 @@ static void CH_Command(id object, WPARAM wparam)
   int tlen = GetWindowTextLength(widget);
   char *buff = (char *)malloc(tlen + 1);
   GetWindowText(widget, buff, tlen+1);
-  
+
   OFString *ret = [OFString stringWithUTF8String : buff];
   free(buff);
   return ret;
