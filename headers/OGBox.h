@@ -24,23 +24,25 @@
 #import "OGWidget.h"
 
 #ifdef OG_WIN32
-typedef struct s_OGBoxChild
+typedef struct og_box_child_t
 {
-	HWND  hwnd;
-	BOOL  expand;
-	BOOL  fill;
-	int   padding;
-	int   originalSize;
-	float currentSize;
-	struct s_OGBoxChild *next;
-} OGBoxChild;
+	HWND   hwnd;
+	BOOL   expand;
+	BOOL   fill;
+	int    padding;
+	int    originalSize;
+	float  currentSize;
+	struct og_box_child_t *next;
+} og_box_child_t;
 #endif
 
 @interface OGBox: OGWidget
 #ifdef OG_WIN32
-{ OGBoxChild *firstBorn; }
-- (void)resizeChildren;
+{
+	og_child_box_t *firstBorn;
+}
 #endif
+
 + box;
 - (void)appendChild: (OGWidget*)child
 	     expand: (BOOL)expand
@@ -50,4 +52,8 @@ typedef struct s_OGBoxChild
 	      expand: (BOOL)expand
 		fill: (BOOL)fill
 	     padding: (float)padding;
+
+#ifdef OG_WIN32
+- (void)OG_resizeChildren;
+#endif
 @end

@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2011, 2012, Dillon Aumiller <dillonaumiller@gmail.com>
+ * Copyright (c) 2012, Jonathan Schleifer <js@webkeks.org>
  *
  * https://webkeks.org/hg/objgui/
  *
@@ -25,7 +26,11 @@
 //==================================================================================================================================
 #include <malloc.h>
 #include <windows.h>
+
+#import <ObjFW/OFNotImplementedException.h>
+
 #import "OGBox.h"
+
 //==================================================================================================================================
 @implementation OGBox
 //----------------------------------------------------------------------------------------------------------------------------------
@@ -67,8 +72,10 @@
 {
 }
 //----------------------------------------------------------------------------------------------------------------------------------
-- (void)resizeChildren
+- (void)OG_resizeChildren
 {
+  @throw [OFNotImplementedException exceptionWithClass: isa
+                                              selector: _cmd];
 }
 //----------------------------------------------------------------------------------------------------------------------------------
 - (int)MessageReceived : (HWND)hwnd : (UINT)msg : (WPARAM)wparam : (LPARAM)lparam

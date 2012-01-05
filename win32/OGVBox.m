@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2011, 2012, Dillon Aumiller <dillonaumiller@gmail.com>
+ * Copyright (c) 2012, Jonathan Schleifer <js@webkeks.org>
  *
  * https://webkeks.org/hg/objgui/
  *
@@ -44,7 +45,7 @@
   SetParent(child->widget, widget);
   GetWindowRect(child->widget, &rc);
   
-  OGBoxChild *newChild   = (OGBoxChild *)malloc(sizeof(OGBoxChild));
+  og_box_child_t *newChild   = malloc(sizeof(og_box_child_t));
   newChild->hwnd         = child->widget;
   newChild->expand       = expand;
   newChild->fill         = fill;
@@ -57,12 +58,12 @@
     firstBorn = newChild;
   else
   {
-    OGBoxChild *curr = firstBorn;
+    og_box_child_t *curr = firstBorn;
     while(curr->next != NULL) curr = curr->next;
     curr->next = newChild;
   }
   
-  [self resizeChildren];
+  [self OG_resizeChildren];
 }
 //----------------------------------------------------------------------------------------------------------------------------------
 - (void)prependChild: (OGWidget*)child
@@ -74,7 +75,7 @@
   SetParent(child->widget, widget);
   GetWindowRect(child->widget, &rc);
   
-  OGBoxChild *newChild   = (OGBoxChild *)malloc(sizeof(OGBoxChild));
+  og_box_child_t *newChild   = malloc(sizeof(og_box_child_t));
   newChild->hwnd         = child->widget;
   newChild->expand       = expand;
   newChild->fill         = fill;
@@ -86,13 +87,13 @@
   firstBorn = newChild;
   
   SetParent(child->widget, widget);
-  [self resizeChildren];
+  [self OG_resizeChildren];
 }
 //----------------------------------------------------------------------------------------------------------------------------------
-- (void)resizeChildren
+- (void)OG_resizeChildren
 {
   RECT rc;
-  OGBoxChild *curr;
+  og_box_child_t *curr;
   
   //get our available size
   GetClientRect(widget, &rc);
@@ -122,7 +123,7 @@
     }
     if(extra < 0)
     {
-      //this will generate a WM_SIZE message, and we'll come back to resizeChildren
+      //this will generate a WM_SIZE message, and we'll come back to OG_resizeChildren
       SetWindowPos(widget, NULL, 0, 0, width, childOriginal, SWP_NOACTIVATE | SWP_NOOWNERZORDER | SWP_NOZORDER | SWP_NOMOVE);
       return;
     }
@@ -171,12 +172,12 @@
   switch(msg)
   {
     case WM_SIZE:
-      [self resizeChildren];
+      [self OG_resizeChildren];
       return DefWindowProc(hwnd, msg, wparam, lparam);
     break;
     
     case WM_SIZING:
-      [self resizeChildren];
+      [self OG_resizeChildren];
       return DefWindowProc(hwnd, msg, wparam, lparam);
     break;
   }
