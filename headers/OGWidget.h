@@ -22,7 +22,7 @@
  */
 
 #ifdef OG_GTK
-#i nclude <gtk/gtk.h>
+# include <gtk/gtk.h>
 #endif
 #ifdef OG_W32
 # include <windows.h>
