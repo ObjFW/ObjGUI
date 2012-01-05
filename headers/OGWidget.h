@@ -21,10 +21,9 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifdef OG_GTK
+#if defined(OG_GTK)
 # include <gtk/gtk.h>
-#endif
-#ifdef OG_W32
+#elif defined(OG_WIN32)
 # include <windows.h>
 #endif
 
@@ -33,10 +32,9 @@
 @interface OGWidget: OFObject
 {
 @public
-#ifdef OG_GTK
+#if defined(OG_GTK)
 	GtkWidget *widget;
-#endif
-#ifdef OG_W32
+#elif defined(OG_WIN32)
 	HWND widget;
 #endif
 }
@@ -45,9 +43,8 @@
 - (void)hide;
 @end
 
-#ifdef OG_GTK
+#if defined(OG_GTK)
 extern void og_destroy(GtkWidget*, OGWidget*);
-#endif
-#ifdef OG_W32
+#elif defined(OG_WIN32)
 extern void og_destroy(HWND widget, OGWidget *object);
 #endif

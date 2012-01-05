@@ -23,7 +23,7 @@
 
 #import "OGWidget.h"
 
-#ifdef OG_W32
+#ifdef OG_WIN32
 typedef struct s_OGBoxChild
 {
 	HWND  hwnd;
@@ -37,7 +37,7 @@ typedef struct s_OGBoxChild
 #endif
 
 @interface OGBox: OGWidget
-#ifdef OG_W32
+#ifdef OG_WIN32
 { OGBoxChild *firstBorn; }
 - (void)resizeChildren;
 #endif
