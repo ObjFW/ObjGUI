@@ -39,7 +39,7 @@ typedef struct og_box_child_t
 @interface OGBox: OGWidget
 #ifdef OG_WIN32
 {
-	og_child_box_t *firstBorn;
+	og_box_child_t *firstBorn;
 }
 #endif
 
