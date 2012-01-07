@@ -20,6 +20,8 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include <gtk/gtk.h>
+
 #import "OGApplication.h"
 
 OF_APPLICATION_DELEGATE(OGApplication)
