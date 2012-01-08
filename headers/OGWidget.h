@@ -38,9 +38,6 @@
 	HWND widget;
 #endif
 }
-
-- (void)show;
-- (void)hide;
 @end
 
 #if defined(OG_GTK)

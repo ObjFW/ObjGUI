@@ -124,6 +124,18 @@ static int CALLBACK Resize_EnumChildren(HWND child, LPARAM lparam)
                SWP_NOACTIVATE | SWP_NOOWNERZORDER | SWP_NOZORDER);
 }
 //----------------------------------------------------------------------------------------------------------------------------------
+- (void)show
+{
+  if(widget != NULL)
+    ShowWindow(widget, SW_SHOWNORMAL);
+}
+//----------------------------------------------------------------------------------------------------------------------------------
+- (void)hide
+{
+  if(widget != NULL)
+    ShowWindow(widget, SW_HIDE);
+}
+//----------------------------------------------------------------------------------------------------------------------------------
 - (BOOL)OG_willClose
 {
   OFAutoreleasePool *pool = [OFAutoreleasePool new];

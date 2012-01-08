@@ -58,18 +58,6 @@ void og_destroy(HWND widget, OGWidget *object)
   return self;
 }
 //----------------------------------------------------------------------------------------------------------------------------------
-- (void)show
-{
-  if(widget != NULL)
-    ShowWindow(widget, SW_SHOWNORMAL);
-}
-//----------------------------------------------------------------------------------------------------------------------------------
-- (void)hide
-{
-  if(widget != NULL)
-    ShowWindow(widget, SW_HIDE);
-}
-//----------------------------------------------------------------------------------------------------------------------------------
 - (int)MessageReceived : (HWND)hwnd : (UINT)msg : (WPARAM)wparam : (LPARAM)lparam
 {
   return DefWindowProc(hwnd, msg, wparam, lparam);

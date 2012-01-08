@@ -44,14 +44,4 @@ void og_destroy(GtkWidget *widget, OGWidget *object)
 
 	return self;
 }
-
-- (void)show
-{
-	gtk_widget_show_all(widget);
-}
-
-- (void)hide
-{
-	gtk_widget_hide(widget);
-}
 @end
