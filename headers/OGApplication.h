@@ -41,3 +41,5 @@
 	og_application_delegate() {	\
 		return [cls class];	\
 	}
+
+extern Class og_application_delegate(void);

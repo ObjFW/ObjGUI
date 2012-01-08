@@ -26,8 +26,6 @@
 
 OF_APPLICATION_DELEGATE(OGApplication)
 
-extern Class og_application_delegate(void);
-
 @implementation OGApplication
 + (void)quit
 {
