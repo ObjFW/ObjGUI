@@ -130,12 +130,6 @@ static int CALLBACK Resize_EnumChildren(HWND child, LPARAM lparam)
     ShowWindow(widget, SW_SHOWNORMAL);
 }
 //----------------------------------------------------------------------------------------------------------------------------------
-- (void)hide
-{
-  if(widget != NULL)
-    ShowWindow(widget, SW_HIDE);
-}
-//----------------------------------------------------------------------------------------------------------------------------------
 - (BOOL)OG_willClose
 {
   OFAutoreleasePool *pool = [OFAutoreleasePool new];

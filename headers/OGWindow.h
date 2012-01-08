@@ -42,5 +42,4 @@
 + window;
 - (void)addChild: (OGWidget*)widget;
 - (void)show;
-- (void)hide;
 @end

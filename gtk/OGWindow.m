@@ -105,11 +105,6 @@ willClose(GtkWidget *widget, GdkEvent *event, gpointer data)
 	gtk_widget_show_all(widget);
 }
 
-- (void)hide
-{
-	gtk_widget_hide(widget);
-}
-
 - (BOOL)OG_willClose
 {
 	OFAutoreleasePool *pool = [OFAutoreleasePool new];
