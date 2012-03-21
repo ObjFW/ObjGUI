@@ -2,7 +2,7 @@
  * Copyright (c) 2011, 2012, Jonathan Schleifer <js@webkeks.org>
  * Copyright (c) 2011, 2012, Dillon Aumiller <dillonaumiller@gmail.com>
  *
- * https://webkeks.org/hg/objgui/
+ * https://webkeks.org/git/?p=objgui.git
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
